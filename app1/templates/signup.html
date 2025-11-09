@@ -1,0 +1,147 @@
+{% include "header.html" %}
+{% load static %}
+<div class="breadcrumbs overlay">
+    <div class="container">
+    <div class="bread-inner">
+    <div class="row">
+    <div class="col-12">
+    <h2>Register</h2>
+    <ul class="bread-list">
+    <li><a href="/index/">Home</a></li>
+    <li><i class="icofont-simple-right"></i></li>
+    <li class="active">Register</li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+    
+    <section class="register section">
+    <div class="container">
+    <div class="inner">
+    <div class="row">
+    <div class="col-lg-6">
+    <div class="register-left">
+    </div>
+    </div>
+    <div class="col-lg-6">
+    <div class="register-form">
+    <h2>Register Here</h2>
+    <p>Already have an account ? <a href="/login/">Login Here</a></p>
+    
+    <form class="form" method="post" action="/registerdata/" onsubmit="return signupvalidate();">
+        {%csrf_token%}
+    <div class="row">
+    <div class="col-lg-6">
+    <div class="form-group">
+    <input type="text" id="firstname" name="firstname" placeholder="First Name">
+    <!-- validations -->
+    <span id="usernameerror" style="color:red;"></span>
+    </div>
+    </div>
+    <div class="col-lg-6">
+    <div class="form-group">
+    <input type="text" id="lastname" name="lastname" placeholder="Last Name">
+     <!-- validations -->
+     <span id="userlastnameerror" style="color:red;"></span>
+    </div>
+    </div>
+    <div class="col-lg-6">
+    <div class="form-group">
+    <input type="text" id="email" name="email" placeholder="Email" onkeyup="this.value = this.value.toLowerCase();">
+     <!-- validations -->
+     <span id="useremailerror" style="color:red;"></span>
+    </div>
+    </div>
+    <div class="col-lg-6">
+    <div class="form-group">
+    <input type="phone" id="phone" name="phone" placeholder="phone">
+     <!-- validations -->
+     <span id="userphoneerror" style="color:red;"></span>
+    </div>
+    </div>
+    <div class="col-lg-6">
+    <div class="form-group">
+    <input type="password" id="password" name="password" placeholder="Password">
+     <!-- validations -->
+     <span id="userpassworderror" style="color:red;"></span>
+    </div>
+    </div>
+    <div class="col-lg-6">
+    <div class="form-group">
+    <input type="password" id="confirmpswd" name="confirmpswd" placeholder="Confirm Password">
+     <!-- validations -->
+     <span id="userpasswordcnferror" style="color:red;"></span>
+     <span id="userpasswordcnferrorg" style="color:red;"></span>
+    </div>
+    </div>
+    <div class="col-12">
+    <div class="form-group login-btn">
+    <button class="btn" type="submit">Submit</button>
+    </div>
+    <div class="checkbox">
+    <label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">Yes, I agree with all</label>
+    </div>
+    <a href="#" class="terms">Terms & Conditions</a>
+    </div>
+    </div>
+    </form>
+    
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    {% include "footer.html" %}
+    
+    <script>
+
+        function signupvalidate(){
+            $userfirstname=$('#firstname').val();
+            $userlastname=$('#lastname').val();
+            $useremail=$('#email').val();
+            $userphone=$('#phone').val();
+            $userpassword=$('#password').val();
+            $userconfirmpassword=$('#confirmpswd').val();
+
+            
+            
+            if($userfirstname==""){
+                $("#usernameerror").html("Pleae enter first name.");
+                return false;
+            }
+            if($userlastname==""){
+                $("#userlastnameerror").html("Please enter last name");
+                return false;
+            }
+            if($useremail==""){
+                $("#useremailerror").html("please enter email");
+                return false;
+            }
+            if($userphone==""){
+                $("#userphoneerror").html("please enter phone");
+                return false;
+            }
+            if($userpassword==""){
+                $("#userpassworderror").html("please enter your password");
+                return false;
+            }
+            if($userconfirmpassword==""){
+                $("#userpasswordcnferror").html("please confirm your above password");
+                return false;
+            }
+            // if($userpassword!=$userconfirmpassword){
+            //     $("#userpasswordcnferrorg").html("password and confirm password does not match");
+            //     return false;
+            // }
+
+
+
+
+
+
+        }
+    </script>

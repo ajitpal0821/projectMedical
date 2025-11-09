@@ -1,0 +1,180 @@
+{% include "header.html" %}
+{% load static %} 
+		<!-- Breadcrumbs -->
+		<div class="breadcrumbs overlay">
+			<div class="container">
+				<div class="bread-inner">
+					<div class="row">
+						<div class="col-12">
+							<h2>Contact Us</h2>
+							<ul class="bread-list">
+								<li><a href="/">Home</a></li>
+								<li><i class="icofont-simple-right"></i></li>
+								<li class="active">Contact Us</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Breadcrumbs -->
+				
+		<!-- Start Contact Us -->
+		<section class="contact-us section">
+			<div class="container">
+				<div class="inner">
+					<div class="row"> 
+						<div class="col-lg-6">
+							<div class="contact-us-left">
+								<!--image calling on the page from static/img folder -->
+                                <img src="{% static 'img/contact-img.png' %}" alt="#">
+								<!--/End Google-map -->
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="contact-us-form">
+								<h2>Contact With Us</h2>
+								<p>If you have any questions please fell free to contact with us.</p>
+								<!-- Form -->
+								<form class="form" method="post" action="/contactus/" onsubmit="return contvalidate();">
+                                    {%csrf_token%}
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<input type="text" id="name" name="name" class="form-control" placeholder="Name" >
+                                                <!-- validations -->
+                                                <span id="contnameerror" style="color: red;"></span>
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<input type="email" id="email" name="email" class="form-control" placeholder="Email" >
+                                                <!-- validations -->
+                                                <span id="contemailerror" style="color: red;"></span>
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<input type="text" id="phone"  name="phone" class="form-control" placeholder="Phone" >
+                                                <!-- validations -->
+                                                <span id="contmoberror" style="color: red;"></span>
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<input type="text" id="subject" name="subject" class="form-control" placeholder="Subject" >
+                                                <!-- validations -->
+                                                <span id="contsubjecterror" style="color: red;"></span>
+											</div>
+										</div>
+										<div class="col-lg-12">
+											<div class="form-group">
+												<textarea name="message" id="message" class="form-control" placeholder="Your Message" ></textarea>
+                                                <!-- validations -->
+                                                <span id="contmsgerror" style="color: red;"></span>
+											</div>
+										</div>
+										<div class="col-12">
+											<div class="form-group login-btn">
+												<button class="btn" type="submit">Send</button>
+											<!-- </div>
+											<div class="checkbox">
+												<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">Do you want to subscribe our Newsletter ?</label> -->
+											</div>
+										</div>
+									</div>
+								</form>
+								<!--/ End Form -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="contact-info">
+					<div class="row">
+						<!-- single-info -->
+						<div class="col-lg-4 col-12 ">
+							<div class="single-info">
+								<i class="icofont icofont-ui-call"></i>
+								<div class="content">
+									<h3>+(91) 1234 56789</h3>
+									<p>info@company.com</p>
+								</div>
+							</div>
+						</div>
+						<!--/End single-info -->
+						<!-- single-info -->
+						<div class="col-lg-4 col-12 ">
+							<div class="single-info">
+								<i class="icofont-google-map"></i>
+								<div class="content">
+									<h3>847</h3>
+									<p>Yamuna Nagar Haryana</p>
+								</div>
+							</div>
+						</div>
+						<!--/End single-info -->
+						<!-- single-info -->
+						<div class="col-lg-4 col-12 ">
+							<div class="single-info">
+								<i class="icofont icofont-wall-clock"></i>
+								<div class="content">
+								<h3>Mon - Sat: 10am - 8pm</h3>
+									<p>Sunday Morning & Thursday evening Closed</p>
+								</div>
+							</div>
+						</div>
+						<!--/End single-info -->
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End Contact Us -->
+        {% include "footer.html" %}         
+
+        <script>
+            function contvalidate()
+            {
+                var name=document.getElementById("name").value;
+                var email=document.getElementById("email").value;
+                var phone=document.getElementById("phone").value;
+                var subject=document.getElementById("subject").value;
+                var message=document.getElementById("message").value;
+
+                if(name==""){
+                    document.getElementById('contnameerror').innerHTML = "Name must be filled out";
+                    return false;
+                }
+                if(name!=""){
+                    document.getElementById('contnameerror').innerHTML = "";
+                }
+                if(email==''){
+                    document.getElementById('contemailerror').innerHTML = "email must be filled out";
+                    return false;
+                }
+                if(email==''){
+                    document.getElementById('contemailerror').innerHTML = "";
+                }
+                if(phone==''){
+                    document.getElementById('contmoberror').innerHTML = "mobile must be filled out";
+                    return false;
+                }
+                if(isNaN(phone)){
+                    document.getElementById('contmoberror').innerHTML = "Enter only integer value";
+                    return false;
+                }
+                if((phone.length < 10 ) || (phone.length > 10)) {
+                    document.getElementById('contmoberror').innerHTML = "Contact number must be 10 digit";
+                    return false;
+                }
+                if(subject==''){
+                    document.getElementById('contsubjecterror').innerHTML = "SUBJECT must be filled out";
+                    return false;
+                }
+                if(message==''){
+                    document.getElementById('contmsgerror').innerHTML = "message must be filled out";
+                    return false;
+                }
+                
+
+            }
+        </script>

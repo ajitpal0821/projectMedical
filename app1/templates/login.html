@@ -1,0 +1,88 @@
+{% include "header.html" %}
+{% load static %}
+<div class="breadcrumbs overlay">
+    <div class="container">
+    <div class="bread-inner">
+    <div class="row">
+    <div class="col-12">
+    <h2>Login</h2>
+    <ul class="bread-list">
+    <li><a href="/index/">Home</a></li>
+    <li><i class="icofont-simple-right"></i></li>
+    <li class="active">Login</li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+    
+    <section class="register section">
+    <div class="container">
+    <div class="inner">
+    <div class="row">
+    <div class="col-lg-6">
+    <div class="register-left">
+    </div>
+    </div>
+    <div class="col-lg-6">
+    <div class="register-form">
+    <h2>Login Here</h2>
+    <p>Already have an account ? <a href="/login/">Login Here</a></p>
+    
+   
+
+    {% if my_static_list %}
+        <ul>
+            {% for item in my_static_list %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+        
+
+
+    <form class="form" method="post" action="/logindata/" >
+        {%csrf_token%}
+    <div class="row">
+
+
+    <div class="col-lg-6">
+    <div class="form-group">
+    <input type="text" id="email" name="useremail" placeholder="Email" onkeyup="this.value = this.value.toLowerCase();">
+     <!-- validations -->
+     <span id="useremailerror" style="color:red;"></span>
+    </div>
+    </div>
+ 
+    <div class="col-lg-6">
+    <div class="form-group">
+    <input type="password" id="userpassword" name="userpassword" placeholder="Password">
+     <!-- validations -->
+     <span id="userpassworderror" style="color:red;"></span>
+    </div>
+    </div>
+  
+    <div class="col-12">
+    <div class="form-group login-btn">
+    <button class="btn" type="submit">Login</button>
+    </div>
+    <div class="checkbox">
+    <label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">Yes, I agree with all</label>
+    </div>
+    <a href="#" class="terms">Terms & Conditions</a>
+    </div>
+    </div>
+    </form>
+    
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    {% include "footer.html" %}
+    
+    

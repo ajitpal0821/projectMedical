@@ -1,0 +1,149 @@
+{% include "header.html" %}
+{% load static %} 
+<!-- Start Appointment -->
+<section class="appointment">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>We Are Always Ready to Help You. Book An Appointment</h2>
+                    <img src="{% static 'img/section-img.png' %}" alt="#">
+                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-12">
+                <form class="form" action="/appointment/" method="post" onsubmit="return appointvalidate();">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="form-group">
+                                <input name="name" id="name" type="text" placeholder="Name">
+                                <!-- validations -->
+                                <span id="apnameerror" style="color: red;"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="form-group">
+                                <input name="email" id="email" type="text" placeholder="Email" onkeyup="this.value.toLowerCase();">
+                                <!-- validations -->
+                                <span id="apemailerror" style="color: red;"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="form-group">
+                                <input name="phone" id="phone" type="text" placeholder="Phone">
+                                <!-- validations -->
+                                <span id="apphoneerror" style="color: red;"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="form-group">
+                                
+                                    <select name="department" id="department" form-control>
+                                        <option value="">Select Department</option>
+                                        <option value="Cardiac Clinic">Cardiac Clinic</option>
+                                        <option value="Neurology">Neurology</option>
+                                        <option value="Dentistry">Dentistry</option>
+                                        <option value="Gastroenterology">Gastroenterology</option>
+                                    </select>
+                                    <!-- validations -->
+                                    <span id="apdeparterror" style="color: red;"></span>
+
+                                
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="form-group">
+                                <select name="doctor" id="doctor" form-control>
+                                <option value="">Select Doctor</option>
+                                <option value="Dr Akther Hossain">Dr. Akther Hossain</option>
+                                <option value="Dr Dery Alex">Dr. Dery Alex</option>
+                                <option value="Dr Jovis Karon">Dr. Jovis Karon</option>
+                                </select>
+                                <!-- validations -->
+                                <span id="apdoctorerror" style="color: red;"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="form-group">
+                                <input type="text" name="cdate"  placeholder="Date" id="datepicker">
+                                <!-- validations -->
+                                <span id="apdateerror" style="color: red;"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-12">
+                            <div class="form-group">
+                                <textarea name="message" id="message" placeholder="Write Your Message Here....."></textarea>
+                                <!-- validations -->
+                                <span id="apmessageerror" style="color: red;"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5 col-md-4 col-12">
+                            <div class="form-group">
+                                <div class="button">
+                                    <button type="submit" class="btn">Book An Appointment</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-8 col-12">
+                            <p>( We will confirm )</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-6 col-md-12 ">
+                <div class="appointment-image">
+                    <img src="{% static 'img/contact-img.png' %}" alt="#">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Appointment -->
+{% include "footer.html" %}
+
+<script>
+    function appointvalidate()
+    {
+                var apname=document.getElementById("name").value;
+                var apemail=document.getElementById("email").value;
+                var apphone=document.getElementById("phone").value;
+                var apdepartment=document.getElementById("department").value;
+                var apdoctor=document.getElementById("doctor").value;
+                var apdate=document.getElementById('datepicker').value;
+                var apmessage=document.getElementById('message').value;
+
+                if(apname==""){
+                    document.getElementById('apnameerror').innerHTML = "Name must be filled out";
+                    return false;
+                }
+                if(apemail==""){
+                    document.getElementById('apemailerror').innerHTML="Email must be filled out";
+                    return false;
+                }
+                if(apphone==""){
+                    document.getElementById('apphoneerror').innerHTML="Phone Number must be filled out";
+                    return false;
+                }
+                if(apdepartment==""){
+                    document.getElementById("apdeparterror").innerHTML="Department must be selected";
+                    return false;
+                }
+                if(apdoctor==""){
+                    document.getElementById("apdoctorerror").innerHTML="Doctor must be filled out";
+                    return false;
+                }
+                if(apdate==""){
+                    document.getElementById("apdateerror").innerHTML="date must be filled out";
+                    return false;
+                }
+                if(apmessage==""){
+                    document.getElementById("apmessageerror").innerHTML="message must be filled out";
+                    return false;
+                }
+    }
+</script>
